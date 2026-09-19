@@ -173,7 +173,7 @@ jobs:
                 mkdir axl/build
                 pushd axl/build
                 cmake .. -DTARGET_CPU=${{matrix.TARGET_CPU}} -DCMAKE_BUILD_TYPE=${{matrix.CONFIGURATION}}
-                make
+                make -C src  # libraries only -- we don't need (and can't always build) the AXL tests
                 popd
 
                 echo "set (AXL_CMAKE_DIR $THIS_DIR/axl/cmake $THIS_DIR/axl/build/cmake)" >> paths.cmake
@@ -328,7 +328,7 @@ jobs:
                 mkdir axl/build
                 pushd axl/build
                 cmake .. -DCMAKE_BUILD_TYPE=${{matrix.CONFIGURATION}}
-                make
+                make -C src  # libraries only -- we don't need (and can't always build) the AXL tests
                 popd
 
                 echo "set (AXL_CMAKE_DIR $THIS_DIR/axl/cmake $THIS_DIR/axl/build/cmake)" >> paths.cmake
