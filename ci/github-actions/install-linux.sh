@@ -31,5 +31,8 @@ fi
 sudo apt-get install -y ragel
 
 if [[ $BUILD_DOC == "true" ]]; then
-	sudo pip install sphinx sphinx_rtd_theme
+	# Ubuntu marks the system Python as externally managed (PEP 668), so pip
+	# can't install into it -- use the distro packages instead
+
+	sudo apt-get install -y python3-sphinx python3-sphinx-rtd-theme
 fi
